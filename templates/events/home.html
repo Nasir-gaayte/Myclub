@@ -1,0 +1,21 @@
+{% extends "events/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container" style="
+border: 25;
+background-color:aquamarine;
+margin:10px 30px ">
+
+    <h1>
+     It is The Time {{time}}
+    </h1>
+    <h1> home </h1>
+    {{cal|safe}}
+<br><br><br>
+</div>
+<h1>
+ copyrighte(c)   {{ cor }}
+</h1>
+  
+  
+{% endblock  %}
