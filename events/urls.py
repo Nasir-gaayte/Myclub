@@ -9,4 +9,5 @@ app_name = 'events'
 urlpatterns = [
     path('',views.home,name='home'),
     path('<int:year>/<str:month>',views.home,name='home'),
+    path('list/',views.all_events,name='list'),
 ]

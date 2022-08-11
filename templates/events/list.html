@@ -1,0 +1,45 @@
+{% extends "events/base.html" %}
+{% load static %}
+
+{% block content %}
+<body style="margin-top: 60px;" >
+    <div class="container jumbotron " 
+    style="border: 25;
+    background-color:rgb(16, 54, 42);
+    color:antiquewhite;
+    margin:10px 30px">
+        <h1>All Of The Events List</h1>
+        <h1>what</h1>
+        <ol>
+            <ul>
+                {% for x in events_list%}
+                <h1>
+                    Event 
+                </h1>
+                <li>
+                    fadlan waxaa ka soo qayp gashaa {{x.name}}
+                </li>  
+                <li>
+                    waqtiga{{x.event_date}}
+                </li>  
+                <li>
+                    ku  : {{x.venue}}
+                </li>  
+                <li>
+                waxaa maamulayaa{{x.manager}}
+               </li>
+               
+               
+               <!-- {% endfor%}
+               {%for i in user%}
+               <li>
+                kasoo qayb galaal:
+                 <li>{{user.first_name}}</li>
+               </li>
+               {% endfor %} -->
+        </ul>
+    </ol>
+    
+ </div>
+</body>
+{% endblock  %}

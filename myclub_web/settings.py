@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'events.apps.EventsConfig'
+    'events.apps.EventsConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -124,7 +125,7 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL  = 'media/'
-
+CRISPY_FORMS_TAGS =  'bootstrap4'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

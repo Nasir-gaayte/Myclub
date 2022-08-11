@@ -2,8 +2,16 @@ from django.shortcuts import render
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
-
+from .models import Events, MyclubUser 
 # Create your views here.
+def all_events(request):
+    events_list = Events.objects.all()
+    user = MyclubUser.objects.all()
+    return render(request, 'events/list.html',{
+        'events_list':events_list,
+        'user':user,
+        })
+
 
 def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     month = month.capitalize()
@@ -24,3 +32,6 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
         'cor':cor,
         'time':time,
     })
+    
+
+        
