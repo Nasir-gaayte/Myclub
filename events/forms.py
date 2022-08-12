@@ -1,7 +1,3 @@
-from tkinter import Widget
-from zlib import decompressobj
-
-
 from django import forms
 from django.forms import ModelForm
 from .models import Venue
