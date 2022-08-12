@@ -1,9 +1,36 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 from .models import Events, MyclubUser 
+from .forms import VenueForm
+from django.contrib import messages
 # Create your views here.
+
+def add_venue(request):
+    form = VenueForm
+    msg = messages
+    if request.method == "POST":
+        form= VenueForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            msg.success(request,"Venue safed")
+            return redirect('events:home')
+        else:
+            msg.error(request,"something gos wrong")
+            return  redirect('events:add_venue')   
+    form = VenueForm()
+    msg = messages
+    return render (request,'events/add_venue.html',
+                   {
+                       'form':form,
+                       'msg':msg,
+                   })        
+            
+    
+
+
+
 def all_events(request):
     events_list = Events.objects.all()
     user = MyclubUser.objects.all()
