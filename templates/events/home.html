@@ -12,11 +12,15 @@ margin:10px 30px ">
     <h1> home </h1>
     {{cal|safe}}
 <br><br><br>
-{{msg.messages}}
+<messages>
+
+    {% csrf_token %}
+    {% for m in messages %}
+    {{m|safe}}
+    {% endfor%}
+</messages>
 </div>
 <h1>
  copyrighte(c)   {{ cor }}
-</h1>
-  
-  
+</h1> 
 {% endblock  %}

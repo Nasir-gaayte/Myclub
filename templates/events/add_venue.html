@@ -8,12 +8,14 @@
     color:antiquewhite;
     margin:10px 30px">
     <h1>Add Venue </h1>
-    {{msg.messages}}
+    
+    
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    
 
     </div>
 </body>

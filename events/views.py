@@ -1,30 +1,65 @@
+from operator import index
+import pkgutil
 from django.shortcuts import render, redirect
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
-from .models import Events, MyclubUser 
+from .models import Events, MyclubUser,Venue
 from .forms import VenueForm
 from django.contrib import messages
 # Create your views here.
 
+def search_venue(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        venues = Venue.objects.filter(name__contains=searched)
+        return render(request, 'events/search_venue.html',
+                  {
+                      'searched':searched,
+                      'venues': venues,
+                  })
+    else:
+        return render(request, 'events/search_venue.html',
+                  {
+                      'searched':searched,
+                      'venues': venues,
+                  })
+
+
+
+def show_venue(request,venue_id):
+    venue = Venue.objects.get(pk=venue_id)
+    
+    return render(request,'events/show_venue.html',{
+        'venue':venue,
+    })
+
+
+def list_venue(request):
+    venue_list = Venue.objects.all()
+    return render(request,'events/list_venue.html',{
+        'venue_list':venue_list
+    })
+
+
 def add_venue(request):
     form = VenueForm
-    msg = messages
+    
     if request.method == "POST":
         form= VenueForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
-            msg.success(request,"Venue safed")
+            messages.success(request,"Venue safed")
             return redirect('events:home')
         else:
-            msg.error(request,"something gos wrong")
+            messages.error(request,"something gos wrong")
             return  redirect('events:add_venue')   
     form = VenueForm()
-    msg = messages
+    
     return render (request,'events/add_venue.html',
                    {
                        'form':form,
-                       'msg':msg,
+                       
                    })        
             
     
