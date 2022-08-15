@@ -1,0 +1,19 @@
+{% extends "events/base.html" %}
+{% block content %}
+<body style="margin-top: 60px;">
+        <div class="container">
+            <h1>Show events </h1>
+            <h1>{{event}}</h1><br>
+            <ul>
+                </li>Date and Time  :- {{event.event_date }}</li><br>
+                </li>Event  :-{{event.venue }}</li><br>
+                </li>Managed By:-{{event.manager }}</li><br>
+                </li>Description:-{{event.description }}</li><br>
+                </li> attendees :->{event.attendees<br></li><br>
+          
+            </ul>
+             
+        </div>
+</body>
+  
+{% endblock %}

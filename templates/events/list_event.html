@@ -2,21 +2,23 @@
 {% block content %}
 <body style="margin-top: 60px">
   <div class="container">
-    <h1>VENUES</h1>
+    <h1>Events</h1>
     <table class="table table-success table-striped">
-      {% for venue in venue_list%}
+      {% csrf_token %}
+      {% for event in event_list%}
       <tr>
         <td>
-          <a href="{% url 'events:show_venue' venue.id %}"> {{venue}} </a>
+          <a href="{% url 'events:show_event' event.id %}"> {{event}} </a>
         </td>
         <td align="right">
-          <a href="{% url 'events:update_venue' venue.id %}"
+          <a href="{% url 'events:update_event' event.id %}"
           class="btn btn-outline-secondary btn-sm"> Update </a>
-          <a href="{% url 'events:delete_venue' venue.id %}"
-          class="btn btn-outline-danger btn-sm"> Delete </a>
+          <a href="{% url 'events:delete_event' event.id %}"
+          class="btn btn-outline-danger btn-sm"> Delete</a>
         </td>
       </tr>
       {% endfor %}
+      
     </table>
   </div>
 </body>

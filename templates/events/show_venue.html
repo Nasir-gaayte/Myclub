@@ -2,14 +2,14 @@
 {% block content %}
 <body style="margin-top: 60px;">
         <div class="container">
-            <h1>{{venue}}</h1>
-            <br>
+            
+            <h1>{{venue}}</h1><br>
             <ul>
-                </li> {{venue.address }}<li>
-                </li>{{venue.zip_code }}</li>
-                </li>{{venue.phone }}</li>
-                </li><a href="{{venue.email_address }}">{{venue.email_address}}</a></li>
-                </li> <a href="{{venue.web }}">{{venue.web}}</a></li>
+                </li>Address  :- {{venue.address }}</li><br>
+                </li>zip_code  :-{{venue.zip_code }}</li><br>
+                </li>Phoen :-{{venue.phone }}</li><br>
+                </li>Email :-{{venue.email_address }}</li><br>
+                </li> WepPage:-<a href="{{venue.web }}">{{venue.web}}</a></li><br>
           
             </ul>
              

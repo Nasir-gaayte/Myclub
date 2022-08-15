@@ -32,14 +32,26 @@
                       <a class="nav-link" href="{% url 'events:list_venue' %}">List Venue</a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link" href="{% url 'events:list_event' %}">List Event</a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link" href="{% url 'events:list' %}">All events list</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'events:add_venue' %}">Add Venue</a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link" href="{% url 'events:add_event' %}">Add event</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'events:venue_text' %}">Save the event</a>
+                    </li>
+                    
+                    
+                    <li class="nav-item">
                       <a class="nav-link" href="#">Link</a>
                     </li>
+                    
                     
                   </ul>
                   <form class="d-flex" role="search" method="POST" action="{% url 'events:search_venue' %}">
