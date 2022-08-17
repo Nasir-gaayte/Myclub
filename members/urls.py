@@ -6,4 +6,5 @@ from members import views
 urlpatterns = [
     path('login/',views.login_user,name='login'),
     path('longout/',views.logout_user,name='logout'),
+    path('register/',views.register_user,name='register'),
 ]

@@ -14,7 +14,13 @@
     <div>
         <nav class="navbar navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
-              <a class="navbar-brand" href="{% url 'events:home' %}">My Club</a>
+              <a class="navbar-brand" href="{% url 'events:home' %}">My Club <br>
+                {% if messages %}
+                {% for message in messages %}
+                  {{message}}
+                {% endfor %}
+              {% endif%}
+              </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -29,13 +35,13 @@
                       <a class="nav-link active" aria-current="page" href="{% url 'events:home' %}">Home</a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link" href="{% url 'events:list' %}">All events list</a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link" href="{% url 'events:list_venue' %}">List Venue</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'events:list_event' %}">List Event</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'events:list' %}">All events list</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'events:add_venue' %}">Add Venue</a>
@@ -43,20 +49,28 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'events:add_event' %}">Add event</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'events:venue_text' %}">Save the event</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'events:venue_csv' %}">Exel sheets</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'events:venue_pdf' %}">PDF sheets</a>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Download the events
+                      </a>
+                      <ul class="dropdown-menu">
+                        {% if user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'events:venue_text' %}">In text </a>
+                        <li><a class="dropdown-item" href="{% url 'events:venue_csv' %}">Excel sheets</a>
+                        <li><a class="dropdown-item" href="{% url 'events:venue_pdf' %}">PDF sheets</a>
+                          {% else %}
+                          <h1>Pleas Singin to use this page</h1>
+                          {% endif %} 
+                        </ul>
                     </li>
                   {% if user.is_authenticated %}
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
                     </li>
                    {% else %}
+                   <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">REGISTER</a>
+                  </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
                     </li>
@@ -80,16 +94,17 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-  <div class="container">
-    {% if messages %}
-      {% for message in messages %}
-        {{message}}
-      {% endfor %}
-    {% endif%}
-  </div>
+
 {% block content %}
       
     {% endblock content %}
+    <div class="container">
+      {% if messages %}
+        {% for message in messages %}
+          {{message}}
+        {% endfor %}
+      {% endif%}
+    </div>
     <div class="footer">
         <img src="{% static 'events/images/gogo.jpeg' %}" class="img-fluid" alt="...">
     </div>

@@ -1,22 +1,24 @@
-{% extends "events/base.html" %}
-{% block content %}
-<body style="margin-top: 60px;" >
+{% extends "events/base.html" %} {% block content %}
+<body style="margin-top: 60px">
+  <div
+    class="container"
+    style="
+      border: 25;
+      background-color: rgb(16, 54, 42);
+      color: antiquewhite;
+      margin: 10px 30px;
+    "
+  >
+    <h1>Add Event</h1>
+    {% if user.is_authenticated %}
 
-    <div class="container"
-    style="border: 25;
-    background-color:rgb(16, 54, 42);
-    color:antiquewhite;
-    margin:10px 30px">
-    <h1>Add Event </h1>
-    
-    
     <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="btn btn-primary">Submit</button>
+      {% csrf_token %} {{form.as_p}}
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    
-
-    </div>
+  </div>
+  {% else %}
+  <h1>Pleas Singin to use this page</h1>
+  {% endif %}
 </body>
 {% endblock %}

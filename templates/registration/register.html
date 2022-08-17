@@ -7,18 +7,19 @@
     background-color:rgb(16, 54, 42);
     color:antiquewhite;
     margin:10px 30px">
-    <h1>Add Venue </h1>
-    {% if user.is_authenticated %}
+    <h1>Register</h1>
     
     
     <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="btn btn-primary">Submit</button>
+        
+            <div class="mb-3">
+                {% csrf_token %}
+                {{form.as_p}}
+        
+        <button type="submit" class="btn btn-primary">Singin</button>
     </form>
+    
+
     </div>
-    {% else %}
-    <h1>Pleas Singin to use this page</h1>
-    {% endif %}
 </body>
 {% endblock %}

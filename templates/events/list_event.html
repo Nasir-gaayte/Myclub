@@ -3,6 +3,7 @@
 <body style="margin-top: 60px">
   <div class="container">
     <h1>Events</h1>
+    {% if user.is_authenticated %}
     <table class="table table-success table-striped">
       {% csrf_token %}
       {% for event in event_list%}
@@ -28,5 +29,7 @@
   <br>
   has Next: {{event.has_next}} -->
 </footer>
-
+{% else %}
+<h1>Pleas Singin to use this page</h1>
+{% endif %}
 {% endblock %}

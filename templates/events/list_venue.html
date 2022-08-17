@@ -3,6 +3,7 @@
 <body style="margin-top: 60px">
   <div class="container">
     <h1>VENUES</h1>
+    {% if user.is_authenticated %}
     <table class="table table-success table-striped">
       {% for venue in venue_list%}
       <tr>
@@ -20,5 +21,7 @@
     </table>
   </div>
 </body>
-
+{% else %}
+<h1>Pleas Singin to use this page</h1>
+{% endif %}
 {% endblock %}

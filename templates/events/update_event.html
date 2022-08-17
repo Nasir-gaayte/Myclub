@@ -1,6 +1,7 @@
 {% extends "events/base.html" %}
 {% block content %}
 <body style="margin-top: 60px;">
+    {% if user.is_authenticated %}
         <div class="container">
             
             <form method="post">
@@ -11,5 +12,7 @@
              
         </div>
 </body>
-  
+{% else %}
+<h1>Pleas Singin to use this page</h1>
+{% endif %}
 {% endblock %}
