@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'events.apps.EventsConfig',
+    'members.apps.MembersConfig',
     'crispy_forms',
 ]
 
@@ -126,6 +127,9 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL  = 'media/'
 CRISPY_FORMS_TAGS =  'bootstrap4'
+
+
+LOGIN_REDIRECT_URL= '/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

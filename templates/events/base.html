@@ -52,6 +52,15 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'events:venue_pdf' %}">PDF sheets</a>
                     </li>
+                  {% if user.is_authenticated %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
+                    </li>
+                   {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+                    </li>
+                   {% endif %}
                     
                     <li class="nav-item">
                       <a class="nav-link" href="#">Link</a>
@@ -71,7 +80,13 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-  
+  <div class="container">
+    {% if messages %}
+      {% for message in messages %}
+        {{message}}
+      {% endfor %}
+    {% endif%}
+  </div>
 {% block content %}
       
     {% endblock content %}
